@@ -1,0 +1,59 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"> {{cliente.id}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"> {{cliente.name}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="federalId">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> CPF / CNPJ </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"> {{cliente.federalId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Email </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"> {{cliente.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Fone </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"> {{cliente.phone}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Localização </mat-header-cell>
+      <mat-cell *matCellDef="let cliente">Florianopolis-SC</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let cliente">
+          <mat-chip-list>
+            <mat-chip [style.color]="'#FFFFFF'" [style.backgroundColor]="cliente.active ?'green' : 'red'">{{cliente.active ?'Ativo' : 'Inativo'}}</mat-chip>
+          </mat-chip-list>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"><mat-icon (click)="editarCliente(cliente)">edit</mat-icon></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+      <mat-cell *matCellDef="let cliente"><span><mat-icon (click)="deletar(cliente)">delete</mat-icon></span></mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

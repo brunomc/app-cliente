@@ -1,0 +1,100 @@
+<div class="container" *ngIf="cliente">
+  <mat-card>
+    <mat-card-title><h1>Formulário de Cliente</h1></mat-card-title>
+    <mat-card-content class="formulario">
+      <mat-grid-list cols="8" rowHeigth="30">
+        <mat-grid-tile colspan="2" rowspan="1">
+            <mat-slide-toggle [(ngModel)]="cliente.active">Ativo</mat-slide-toggle>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="6" rowspan="1">
+           
+          </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="1">
+          <mat-radio-group>
+            <mat-radio-button value="1">CPF</mat-radio-button><br/>
+            <mat-radio-button value="2">CNPJ</mat-radio-button>
+          </mat-radio-group>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="1">
+          <mat-form-field class="nome">
+            <input matInput name="name" placeholder="Nome" [(ngModel)]="cliente.name" #nome="ngModel" required>
+            <mat-error *ngIf="nome.errors">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          
+        </mat-grid-tile>
+        
+        <mat-grid-tile colspan="2" rowspan="1">
+          <mat-form-field class="cpf">
+            <input matInput name="cpf" placeholder="CPF" [(ngModel)]="cliente.federalId">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="1">
+            <mat-radio-group [(ngModel)]="cliente.gender">
+                <mat-radio-button value="M">Masculino</mat-radio-button><br/>
+                <mat-radio-button value="F">Feminino</mat-radio-button>
+              </mat-radio-group>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field class="rg">
+                <input matInput placeholder="RG"  [(ngModel)]="cliente.registration" #rgv="ngModel" required>
+                <mat-error *ngIf="rgv.errors">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field class="email">
+                <input matInput placeholder="Email" [(ngModel)]="cliente.email" #emailv="ngModel" required>
+                <mat-error *ngIf="emailv.errors">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field class="celular1">
+                <input matInput placeholder="Celular 1"  [(ngModel)]="cliente.phone" #phonev="ngModel" required>
+                <mat-error *ngIf="phonev.errors">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field class="celular2">
+                <input matInput placeholder="Celular 2"  [(ngModel)]="cliente.phone2">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field class="foneResidencial">
+                <input matInput placeholder="Fone Residencial"  [(ngModel)]="cliente.residentialPhone">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field class="foneComercial">
+                <input matInput placeholder="Fone Comercial"  [(ngModel)]="cliente.commercialPhone">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="8" rowspan="1">
+            <mat-form-field class="emailCobranca" >
+                <input matInput  placeholder="Email de cobrança" [(ngModel)]="cliente.email">
+                <mat-hint align="end">(use ; para separar os endereços)</mat-hint>
+              </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="8" rowspan="1">
+           
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="1">
+            
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2" rowspan="1">
+           
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2" rowspan="1">
+            
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2" rowspan="1">
+              <button mat-raised-button (click)="closeModal();">Cancelar</button> &nbsp;&nbsp;
+              <button mat-raised-button color="primary"
+               (click)="salvar()" [disabled]="nome.errors||rgv.errors||phonev.errors||emailv.errors">Salvar
+              </button>
+              
+          </mat-grid-tile>
+      </mat-grid-list>
+     
+    </mat-card-content>
+  </mat-card>
+
+</div>

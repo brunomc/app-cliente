@@ -1,0 +1,17 @@
+.container{
+  width:100%;
+  height:95%;
+}
+
+  ::ng-deep .mat-input-wrapper ,
+  .emailCobranca,
+  .nome,
+  .cpf,
+   .foneComercial,
+   .foneResidencial,
+   .celular1,
+   .celular2,
+   .rg,
+   .email{
+    width: 95% !important;
+  }
