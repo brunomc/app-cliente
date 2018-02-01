@@ -20,10 +20,10 @@ export class ListaClientesComponent {
 
     this.listAll();
   }
-  displayedColumns = ['name', 'federalId','email', 'phone', 'city', 'status', 'edit', 'delete'];
+  displayedColumns = ['name', 'federalId', 'email', 'phone', 'city', 'status', 'edit', 'delete'];
 
   ngAfterViewInit() {
-   
+
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -38,10 +38,10 @@ export class ListaClientesComponent {
     this.onEdit.emit(cliente);
     console.log(cliente);
   }
-  deletar(cliente:Cliente){
+  deletar(cliente: Cliente) {
     this.onDelete.emit(cliente);
   }
-  listAll(){
+  listAll() {
     this.clienteService.findAll().then(response => {
       console.log(response);
       this.dataSource = new MatTableDataSource(response.data.customerList);
@@ -53,13 +53,11 @@ export class ListaClientesComponent {
       )
 
   }
-  
-  setDataSource(){
+
+  setDataSource() {
     this.dataSource._renderChangesSubscription;
-    }
   }
-
-
-
 }
+
+
 
